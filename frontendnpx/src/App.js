@@ -49,12 +49,12 @@ function App() {
       {/* HERO SECTION */}
       <header className="hero">
         <div className="hero-content">
-          <div className="avatar">👨‍💻</div>
-          <h1>Your Name Here</h1>
-          <p className="tagline">Computer Science Student | Web Developer</p>
+          <img src="/profile.jpg" alt="Profile" className="avatar-img" />
+          <h1>Geoff Guevarra</h1>
+          <p className="tagline">IT Student | WEBPROG FINALS</p>
           <div className="social-links">
-            <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/APCgeoffguevarra">GitHub</a>
+            
           </div>
         </div>
       </header>
@@ -64,9 +64,7 @@ function App() {
         <section className="section" id="about">
           <h2>About Me</h2>
           <p>
-            Hi! I'm a passionate web developer who loves building things for the internet.
-            I'm currently studying Computer Science and working on personal projects
-            to sharpen my skills in React, NestJS, and cloud deployment.
+            bio to be edited
           </p>
         </section>
 
@@ -93,7 +91,7 @@ function App() {
             </div>
             <div className="project-card">
               <h3>Project Two</h3>
-              <p>Description of another project you've worked on. Add your real projects here!</p>
+              <p>Used Azure machine learning to predit NBA outcomes we called it NBA ORACLE</p>
               <span className="tech-tag">JavaScript</span>
               <span className="tech-tag">Node.js</span>
             </div>
