@@ -73,7 +73,7 @@ function App() {
       </nav>
 
       {/* HERO */}
-      <header className="hero" style={{ backgroundImage: `linear-gradient(160deg, rgba(255,245,248,0.85) 0%, rgba(240,250,245,0.85) 50%, rgba(245,240,255,0.85) 100%), url(${heroBg})` }}>
+      <header className="hero" style={{ backgroundImage: `linear-gradient(160deg, rgba(10,10,18,0.55) 0%, rgba(10,10,18,0.45) 50%, rgba(10,10,18,0.55) 100%), url(${heroBg})` }}>
         <div className="hero-blob blob1" />
         <div className="hero-blob blob2" />
         <div className="hero-blob blob3" />
@@ -210,7 +210,7 @@ function App() {
                     <a href="#!" className="proj-link">⬡ Code</a>
                   </div>
                 </div>
-                <h3>Project Two</h3>
+                <h3>AZURE</h3>
                 <p>Used Azure Machine Learning to predict Nba Playoff Contenders</p>
                 <div className="tag-row">
                   <span className="tag">Azure</span>
@@ -226,7 +226,7 @@ function App() {
                     <a href="#!" className="proj-link">⬡ Code</a>
                   </div>
                 </div>
-                <h3>Project Three</h3>
+                <h3>PEMBEDS FINALS ARDUINO</h3>
                 <p>Created a small scale speed detector using Arduino R3 kit</p>
                 <div className="tag-row">
                   <span className="tag">Arduino</span>
