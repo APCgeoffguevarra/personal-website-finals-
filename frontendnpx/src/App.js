@@ -78,11 +78,13 @@ function App() {
         <div className="hero-content">
           <div className="hero-badge">👋 Welcome to my portfolio</div>
           <div className="avatar-wrap">
-            <div className="avatar-ring" />
-            <div className="avatar">👨‍💻</div>
-          </div>
-          <h1>Your Name Here</h1>
-          <p className="tagline">Computer Science Student &nbsp;·&nbsp; Web Developer &nbsp;·&nbsp; Creator</p>
+  <div className="avatar-ring" />
+  <div className="avatar">
+    <img src="/profile.jpg" alt="Geoff" className="avatar-photo" />
+  </div>
+</div>
+          <h1>Geoff Andrew Guevarra</h1>
+          <p className="tagline">BSIT Student &nbsp;·&nbsp; Web Developer &nbsp;·&nbsp; Creator</p>
           <div className="social-links">
             <a href="https://github.com/APCgeoffguevarra" target="_blank" rel="noreferrer" className="social-btn github">
               <span>⬡</span> GitHub
