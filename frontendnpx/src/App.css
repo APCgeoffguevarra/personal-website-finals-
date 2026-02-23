@@ -104,7 +104,7 @@ body {
   padding: 120px 20px 80px;
   background: 
     linear-gradient(160deg, rgba(255,245,248,0.85) 0%, rgba(240,250,245,0.85) 50%, rgba(245,240,255,0.85) 100%),
-    url('/hero-bg.jpg') center/cover no-repeat;
+    url('%PUBLIC_URL%/hero-bg.jpg') center/cover no-repeat;
 }
 
 .hero-blob {
