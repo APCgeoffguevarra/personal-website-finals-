@@ -1,3 +1,5 @@
+import heroBg from './hero-bg.jpg';
+import profilePic from './profile.jpg';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -71,7 +73,7 @@ function App() {
       </nav>
 
       {/* HERO */}
-      <header className="hero">
+      <header className="hero" style={{ backgroundImage: `linear-gradient(160deg, rgba(255,245,248,0.85) 0%, rgba(240,250,245,0.85) 50%, rgba(245,240,255,0.85) 100%), url(${heroBg})` }}>
         <div className="hero-blob blob1" />
         <div className="hero-blob blob2" />
         <div className="hero-blob blob3" />
@@ -80,7 +82,7 @@ function App() {
           <div className="avatar-wrap">
   <div className="avatar-ring" />
   <div className="avatar">
-    <img src="/profile.jpg" alt="Geoff" className="avatar-photo" />
+    <img src={profilePic} alt="Geoff" className="avatar-photo" />
   </div>
 </div>
           <h1>Geoff Andrew Guevarra</h1>
