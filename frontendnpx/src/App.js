@@ -1,3 +1,6 @@
+import photo1 from './bball.jpg';
+import photo2 from './MC1.jpg';
+import photo1 from './MC2.jpg';
 import heroBg from './hero-bg.jpg';
 import profilePic from './profile.jpg';
 import React, { useState, useEffect } from 'react';
@@ -5,6 +8,20 @@ import axios from 'axios';
 import './App.css';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+
+// =============================================
+// ADD YOUR GALLERY PHOTOS HERE
+// Put your images in the src folder and import them like:
+// import photo1 from './photo1.jpg';
+// Then add them to the GALLERY_PHOTOS array below
+// =============================================
+const GALLERY_PHOTOS = [
+     { src: bball, caption: Hobby},
+     { src: MC1, caption: 'My Motorcycle'},
+     { src: MC2, caption: 'My Motorcycle'},
+  // { src: photo1, caption: 'Caption here' },
+  // { src: photo2, caption: 'Another caption' },
+];
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -14,6 +31,7 @@ function App() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
 
   useEffect(() => {
     fetchMessages();
@@ -62,7 +80,7 @@ function App() {
           {menuOpen ? '✕' : '☰'}
         </button>
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          {['about', 'skills', 'projects', 'guestbook'].map(s => (
+          {['about', 'skills', 'projects', 'gallery', 'guestbook'].map(s => (
             <li key={s}>
               <button onClick={() => scrollTo(s)}>
                 {s.charAt(0).toUpperCase() + s.slice(1)}
@@ -80,20 +98,26 @@ function App() {
         <div className="hero-content">
           <div className="hero-badge">👋 Welcome to my portfolio</div>
           <div className="avatar-wrap">
-  <div className="avatar-ring" />
-  <div className="avatar">
-    <img src={profilePic} alt="Geoff" className="avatar-photo" />
-  </div>
-</div>
+            <div className="avatar-ring" />
+            <div className="avatar">
+              <img src={profilePic} alt="Geoff" className="avatar-photo" />
+            </div>
+          </div>
           <h1>Geoff Andrew Guevarra</h1>
           <p className="tagline">BSIT Student &nbsp;·&nbsp; Web Developer &nbsp;·&nbsp; Creator</p>
           <div className="social-links">
-            <a href="https://github.com/APCgeoffguevarra" target="_blank" rel="noreferrer" className="social-btn github">
+            <a
+              href="https://github.com/APCgeoffguevarra"
+              target="_blank"
+              rel="noreferrer"
+              className="social-btn github"
+            >
               <span>⬡</span> GitHub
             </a>
-            
-            
-            <a href="grguevarra@student.apc.edu.ph" className="social-btn email">
+            <a
+              href="mailto:grguevarra@student.apc.edu.ph"
+              className="social-btn email"
+            >
               <span>✉</span> Email
             </a>
           </div>
@@ -112,12 +136,8 @@ function App() {
             <h2>Hey there! <span className="wave">👋</span></h2>
             <div className="about-grid">
               <div className="about-text">
-                <p>
-                 IT student/Athlete in Asia Pacific College
-                </p>
-                <p>
-                  I love exploring the world and experiencing different cultures and perspectives
-                </p>
+                <p>IT student/Athlete in Asia Pacific College</p>
+                <p>I love exploring the world and experiencing different cultures and perspectives</p>
               </div>
               <div className="about-cards">
                 <div className="info-card pink">
@@ -160,14 +180,14 @@ function App() {
             <h2>What I Work With</h2>
             <div className="skills-grid">
               {[
-                { name: 'React', icon: '⚛️', color: 'pink' },
-                { name: 'NestJS', icon: '🔴', color: 'mint' },
-                { name: 'JavaScript', icon: '🟡', color: 'peach' },
-                { name: 'TypeScript', icon: '🔷', color: 'lavender' },
-                { name: 'Supabase', icon: '🟢', color: 'mint' },
-                { name: 'Git', icon: '🐙', color: 'pink' },
-                { name: 'HTML / CSS', icon: '🎨', color: 'peach' },
-                { name: 'Node.js', icon: '🟩', color: 'lavender' },
+                { name: 'React',       icon: '⚛️', color: 'pink' },
+                { name: 'NestJS',      icon: '🔴', color: 'mint' },
+                { name: 'JavaScript',  icon: '🟡', color: 'peach' },
+                { name: 'TypeScript',  icon: '🔷', color: 'lavender' },
+                { name: 'Supabase',    icon: '🟢', color: 'mint' },
+                { name: 'Git',         icon: '🐙', color: 'pink' },
+                { name: 'HTML / CSS',  icon: '🎨', color: 'peach' },
+                { name: 'Node.js',     icon: '🟩', color: 'lavender' },
               ].map(skill => (
                 <div key={skill.name} className={`skill-card ${skill.color}`}>
                   <span className="skill-icon">{skill.icon}</span>
@@ -184,17 +204,13 @@ function App() {
             <div className="section-label">03 — Projects</div>
             <h2>Things I've Built</h2>
             <div className="projects-grid">
+
               <div className="project-card pink-card">
-                <div className="project-header">
+                <div className="project-icon-row">
                   <div className="project-icon">🌐</div>
-                  <div className="project-links">
-                    <a href="#!" className="proj-link">↗ Live</a>
-                    <a href="#!" className="proj-link">⬡ Code</a>
-                  </div>
                 </div>
                 <h3>Personal Portfolio</h3>
                 <p>This portfolio site built with React and NestJS, deployed on Vercel with a Supabase guestbook.</p>
-                
                 <div className="tag-row">
                   <span className="tag">React</span>
                   <span className="tag">NestJS</span>
@@ -203,45 +219,99 @@ function App() {
               </div>
 
               <div className="project-card mint-card">
-                <div className="project-header">
-                  <div className="project-icon">📱</div>
-                  <div className="project-links">
-                    <a href="#!" className="proj-link">↗ Live</a>
-                    <a href="#!" className="proj-link">⬡ Code</a>
-                  </div>
+                <div className="project-icon-row">
+                  <div className="project-icon">☁️</div>
                 </div>
-                <h3>AZURE</h3>
-                <p>Used Azure Machine Learning to predict Nba Playoff Contenders</p>
+                <h3>Azure NBA Predictor</h3>
+                <p>Used Azure Machine Learning to predict NBA Playoff Contenders.</p>
                 <div className="tag-row">
                   <span className="tag">Azure</span>
-                  <span className="tag">Azure Machine Learning</span>
+                  <span className="tag">Machine Learning</span>
                 </div>
               </div>
 
               <div className="project-card lavender-card">
-                <div className="project-header">
+                <div className="project-icon-row">
                   <div className="project-icon">🛠️</div>
-                  <div className="project-links">
-                    <a href="#!" className="proj-link">↗ Live</a>
-                    <a href="#!" className="proj-link">⬡ Code</a>
-                  </div>
                 </div>
-                <h3>PEMBEDS FINALS ARDUINO</h3>
-                <p>Created a small scale speed detector using Arduino R3 kit</p>
+                <h3>Arduino Speed Detector</h3>
+                <p>Created a small scale speed detector using an Arduino R3 kit.</p>
                 <div className="tag-row">
                   <span className="tag">Arduino</span>
                   <span className="tag">Java</span>
                   <span className="tag">PEMBEDS</span>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
 
-        {/* GUESTBOOK */}
-        <section className="section alt" id="guestbook">
+        {/* GALLERY */}
+        <section className="section alt" id="gallery">
           <div className="section-inner">
-            <div className="section-label">04 — Guestbook</div>
+            <div className="section-label">04 — Gallery</div>
+            <h2>📸 Photos</h2>
+            <p className="section-sub gallery-hint">
+              {GALLERY_PHOTOS.length === 0
+                ? 'Add your photos by importing them at the top of App.js and adding them to the GALLERY_PHOTOS array.'
+                : 'Click any photo to view it larger.'}
+            </p>
+
+            {GALLERY_PHOTOS.length === 0 ? (
+              <div className="gallery-empty">
+                <span>🖼️</span>
+                <p>Your photos will appear here</p>
+                <p className="gallery-empty-hint">
+                  Upload images to <code>frontendnpx/src/</code> folder,<br/>
+                  import them at the top of App.js,<br/>
+                  then add them to the GALLERY_PHOTOS array.
+                </p>
+              </div>
+            ) : (
+              <div className="gallery-grid">
+                {GALLERY_PHOTOS.map((photo, index) => (
+                  <div
+                    key={index}
+                    className="gallery-item"
+                    onClick={() => setLightbox(index)}
+                  >
+                    <img src={photo.src} alt={photo.caption || `Photo ${index + 1}`} />
+                    {photo.caption && (
+                      <div className="gallery-caption">{photo.caption}</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* LIGHTBOX */}
+        {lightbox !== null && (
+          <div className="lightbox" onClick={() => setLightbox(null)}>
+            <button className="lightbox-close" onClick={() => setLightbox(null)}>✕</button>
+            <img
+              src={GALLERY_PHOTOS[lightbox].src}
+              alt={GALLERY_PHOTOS[lightbox].caption || ''}
+              onClick={e => e.stopPropagation()}
+            />
+            {GALLERY_PHOTOS[lightbox].caption && (
+              <p className="lightbox-caption">{GALLERY_PHOTOS[lightbox].caption}</p>
+            )}
+            {lightbox > 0 && (
+              <button className="lightbox-prev" onClick={e => { e.stopPropagation(); setLightbox(lightbox - 1); }}>‹</button>
+            )}
+            {lightbox < GALLERY_PHOTOS.length - 1 && (
+              <button className="lightbox-next" onClick={e => { e.stopPropagation(); setLightbox(lightbox + 1); }}>›</button>
+            )}
+          </div>
+        )}
+
+        {/* GUESTBOOK */}
+        <section className="section" id="guestbook">
+          <div className="section-inner">
+            <div className="section-label">05 — Guestbook</div>
             <h2>Leave a Message 💌</h2>
             <p className="section-sub">Say hi, leave feedback, or just drop a note!</p>
 
@@ -250,6 +320,8 @@ function App() {
                 <div className="form-group">
                   <label>Your Name</label>
                   <input
+                    id="guestbook-name"
+                    name="guestbook-name"
                     type="text"
                     placeholder="e.g. John Doe"
                     value={name}
@@ -260,6 +332,8 @@ function App() {
                 <div className="form-group">
                   <label>Message</label>
                   <textarea
+                    id="guestbook-message"
+                    name="guestbook-message"
                     placeholder="Write something nice..."
                     value={message}
                     onChange={e => setMessage(e.target.value)}
