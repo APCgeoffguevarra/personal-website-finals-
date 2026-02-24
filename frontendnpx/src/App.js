@@ -1,6 +1,6 @@
-import photo1 from './bball.jpg';
-import photo2 from './MC1.jpg';
-import photo1 from './MC2.jpg';
+import bball from './bball.jpg';
+import MC1 from './MC1.jpg';
+import MC2 from './MC2.jpg';
 import heroBg from './hero-bg.jpg';
 import profilePic from './profile.jpg';
 import React, { useState, useEffect } from 'react';
@@ -16,7 +16,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001'
 // Then add them to the GALLERY_PHOTOS array below
 // =============================================
 const GALLERY_PHOTOS = [
-     { src: bball, caption: Hobby},
+     { src: bball, caption: 'Hobby'},
      { src: MC1, caption: 'My Motorcycle'},
      { src: MC2, caption: 'My Motorcycle'},
   // { src: photo1, caption: 'Caption here' },
